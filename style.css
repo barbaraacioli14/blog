@@ -1,24 +1,88 @@
+:root {
+  --rosa-claro: #fff1f5;
+  --rosa-medio: #c21870;
+  --rosa-escuro: #7a2345;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #f2f8ff;
-  color: #18334f;
+  background: var(--rosa-claro);
+  color: var(--rosa-escuro);
   font-family: Arial, sans-serif;
 }
 
 .site-header {
+  position: relative;
+  overflow: hidden;
   padding: 28px 20px;
-  background: #1769aa;
+  background: var(--rosa-medio);
   color: #ffffff;
+}
+
+.site-header::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background-image: linear-gradient(
+    110deg,
+    transparent 37%,
+    rgba(255, 255, 255, 0.32) 48%,
+    rgba(255, 255, 255, 0.08) 51%,
+    transparent 63%
+  );
+  background-size: 220% 100%;
+  animation: shimmer-sweep 3.8s ease-in-out infinite;
+}
+
+.site-header::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.55;
+  background-image:
+    linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff),
+    linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff),
+    linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff),
+    linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff),
+    linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff),
+    linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff);
+  background-repeat: no-repeat;
+  background-size: 2px 14px, 14px 2px, 2px 10px, 10px 2px,
+    2px 18px, 18px 2px, 2px 12px, 12px 2px,
+    2px 15px, 15px 2px, 2px 11px, 11px 2px;
+  background-position: 8% 25%, 8% 25%, 22% 68%, 22% 68%,
+    40% 30%, 40% 30%, 59% 75%, 59% 75%,
+    78% 30%, 78% 30%, 93% 66%, 93% 66%;
+  animation: sparkle 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer-sweep {
+  to {
+    background-position: -120% 0;
+  }
+}
+
+@keyframes sparkle {
+  to {
+    opacity: 0.8;
+  }
 }
 
 .header-content,
 .page-content {
   width: min(100% - 32px, 760px);
   margin: 0 auto;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
 }
 
 .site-title {
@@ -30,7 +94,7 @@ body {
 
 .site-header p {
   margin: 8px 0 0;
-  color: #e4f2ff;
+  color: var(--rosa-claro);
 }
 
 .page-content {
@@ -40,7 +104,7 @@ body {
 .new-post,
 .post {
   padding: 24px;
-  border: 1px solid #d5e5f3;
+  border: 1px solid var(--rosa-medio);
   border-radius: 8px;
   background: #ffffff;
 }
@@ -49,7 +113,7 @@ h1,
 h2,
 h3 {
   margin-top: 0;
-  color: #174c79;
+  color: var(--rosa-escuro);
 }
 
 h1 {
@@ -71,10 +135,10 @@ input[type="file"],
 textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #aac7df;
+  border: 1px solid var(--rosa-medio);
   border-radius: 5px;
   background: #ffffff;
-  color: #18334f;
+  color: var(--rosa-escuro);
   font: inherit;
 }
 
@@ -86,7 +150,7 @@ button {
   padding: 10px 16px;
   border: 0;
   border-radius: 5px;
-  background: #1769aa;
+  background: var(--rosa-medio);
   color: #ffffff;
   cursor: pointer;
   font: inherit;
@@ -94,7 +158,7 @@ button {
 }
 
 button:hover {
-  background: #105487;
+  background: var(--rosa-escuro);
 }
 
 #post-form button {
@@ -126,14 +190,14 @@ button:hover {
 
 .post-date {
   margin: 0;
-  color: #60778b;
+  color: var(--rosa-escuro);
   font-size: 14px;
 }
 
 .comments {
   margin-top: 22px;
   padding-top: 18px;
-  border-top: 1px solid #d5e5f3;
+  border-top: 1px solid var(--rosa-medio);
 }
 
 .comments h3 {
@@ -152,7 +216,7 @@ button:hover {
 .comment-list li {
   padding: 9px 11px;
   border-radius: 5px;
-  background: #f2f8ff;
+  background: var(--rosa-claro);
   overflow-wrap: anywhere;
 }
 
@@ -165,18 +229,18 @@ button:hover {
   flex: 1;
   min-width: 0;
   padding: 9px;
-  border: 1px solid #aac7df;
+  border: 1px solid var(--rosa-medio);
   border-radius: 5px;
   font: inherit;
 }
 
 .empty-message {
-  color: #60778b;
+  color: var(--rosa-escuro);
 }
 
 .site-footer {
   padding: 18px;
-  color: #60778b;
+  color: var(--rosa-escuro);
   text-align: center;
 }
 
@@ -197,5 +261,12 @@ button:hover {
   .comment-form {
     align-items: stretch;
     flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header::before,
+  .site-header::after {
+    animation: none;
   }
 }
