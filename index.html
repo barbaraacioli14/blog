@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Blog Azul</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <a class="site-title" href="index.html">Meu Blog Azul</a>
+      <p>Um espaço para compartilhar momentos</p>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="new-post" aria-labelledby="new-post-title">
+      <h1 id="new-post-title">Nova publicação</h1>
+      <form id="post-form">
+        <label for="photo">Escolha uma imagem</label>
+        <input type="file" id="photo" accept="image/*" required>
+
+        <label for="caption">Escreva uma legenda</label>
+        <textarea id="caption" rows="3" placeholder="O que você gostaria de compartilhar?" required></textarea>
+
+        <button type="submit">Publicar</button>
+      </form>
+    </section>
+
+    <section class="feed" aria-labelledby="feed-title">
+      <h2 id="feed-title">Publicações</h2>
+      <div id="posts" class="posts">
+        <p class="empty-message">Ainda não há publicações. Adicione a primeira!</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Feito com HTML, CSS e JavaScript</p>
+  </footer>
+</body>
+</html>
